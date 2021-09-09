@@ -10,13 +10,16 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent } from "vue";
+import { computed, ComputedRef, defineComponent } from "vue";
 import { mapActions, useStore } from "vuex";
+import { INation } from "@/types/datausa";
 
 export default defineComponent({
   setup() {
     const store = useStore();
-    const nations = computed(() => store.getters["nations"]);
+    const nations: ComputedRef<INation[]> = computed(
+      () => store.getters["nations"]
+    );
 
     return { nations };
   },

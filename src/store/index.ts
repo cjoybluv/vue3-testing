@@ -1,18 +1,11 @@
 import { createStore } from "vuex";
 import axios from "axios";
 
-interface INation {
-  "ID Nation": string;
-  "ID Year": number;
-  Nation: string;
-  Population: number;
-  "Slug Nation": string;
-  Year: string;
-}
+import { INation } from "@/types/datausa";
 
 export default createStore({
   state: {
-    nations: [],
+    nations: [] as INation[],
   },
   getters: {
     nations(state) {
@@ -20,7 +13,7 @@ export default createStore({
     },
   },
   mutations: {
-    SET_NATIONS(state, nations) {
+    SET_NATIONS(state, nations: INation[]) {
       state.nations = nations;
     },
   },
